@@ -1,7 +1,6 @@
 #include <iostream>
 
 using namespace std;
-// function to sum of n natural numbers
 
 void evenOrOdd()
 {
