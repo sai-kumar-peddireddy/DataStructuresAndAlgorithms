@@ -43,7 +43,7 @@ void insertAt(size_t pos, array<char, len>& arr, char val)
 	}
 	
 	
-	for(size_t i  = arr.size() -1; i > pos ; --i )
+	for(size_t i  = arr.size() - 1; i > pos; --i )
 		arr[i] = arr[i-1];
        
    arr[pos] = val;	
