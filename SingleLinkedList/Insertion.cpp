@@ -19,7 +19,7 @@ int main()
     printList(head);
 
     DeleteAll(head);
-	return 0;
+    return 0;
 }
 
 
@@ -51,10 +51,10 @@ void InsertValAtBeginning(int data)
 {
     if(head)
     {
-        auto temp_itr = head;
-        head = new Node();
-        head->mData = data;
-        head->mNext = temp_itr;
+        auto new_node = new Node();
+        new_node->mData = data;
+        new_node->mNext = head;
+        head = new_node;
     }
     else
     {
