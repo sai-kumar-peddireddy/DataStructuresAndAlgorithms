@@ -84,7 +84,7 @@ void DeleteAll(Node* head)
     if(head)
     {
         auto itr = head;
-        while (itr->mNext != nullptr)
+        while (itr != nullptr)
         {
             cout <<itr->mData <<'\t';
 
