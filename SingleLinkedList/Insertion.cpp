@@ -18,6 +18,9 @@ int main()
 
     printList(head);
 
+    for(int i = 1; i < 10; i += 2)
+        InserAtGivenIndex(i + 10, i + 5);
+
     DeleteAll(head);
     return 0;
 }
@@ -61,6 +64,35 @@ void InsertValAtBeginning(int data)
         head = new Node();
         head->mData = data;
         head->mNext = nullptr;
+    }
+}
+
+void InserAtGivenIndex(int data, int pos)
+{
+    if(pos == 1)
+    {
+        auto new_node = new Node();
+        new_node->mData = data;
+        new_node->mNext = head;
+        head = new_node;
+    }
+    else
+    {
+        auto itr = head;
+        for(int i = 1; i < pos -1; ++i) //traversing till n-1 node
+        {
+            if(!itr)
+            {
+                cout<< "given positon is not a vaild position";
+                return ;
+            }
+            itr = itr->mNext;
+        }
+
+        auto new_node = new Node();
+        new_node->mData = data;
+        new_node->mNext = itr->mNext;
+        itr->mNext = new_node;
     }
 }
 
