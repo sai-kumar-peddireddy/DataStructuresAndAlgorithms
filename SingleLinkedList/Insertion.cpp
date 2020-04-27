@@ -11,17 +11,21 @@ int main()
     for(int i = 0; i < 10; ++i)
         InsertValAtBeginning(i);
 
-    printList(head);
+    printList();
 
     for(int i = 9; i >= 0; --i)
         InsertValAtEnd(i);
 
-    printList(head);
+    printList();
 
     for(int i = 1; i < 10; i += 2)
         InserAtGivenIndex(i + 10, i + 5);
 
-    DeleteAll(head);
+    printList();
+
+    DeleteAtGivenIndex(2);
+
+    DeleteAll();
     return 0;
 }
 
@@ -96,7 +100,39 @@ void InserAtGivenIndex(int data, int pos)
     }
 }
 
-void printList(Node* head)
+void DeleteAtGivenIndex(int pos)
+{
+    if(pos == 1)
+    {
+        auto node_to_delete = head;
+        head = head->mNext;
+        delete node_to_delete;
+    }
+    else
+    {
+        auto itr = head;
+
+        // loop to traverse n-1th node
+
+        for(int i = 1; i < pos - 1; ++i)
+        {
+            itr = itr->mNext;
+            if(!itr)
+            {
+                cout<< "given positon is not a vaild position";
+                return ;
+            }
+        }
+        auto node_to_delete = itr->mNext;
+        itr->mNext = node_to_delete->mNext;
+
+        cout <<"delteing: " << node_to_delete->mData
+             << " pos: "<< pos <<'\t';
+        delete node_to_delete;
+    }
+}
+
+void printList()
 {
     cout<<'\n'<<"Values are: "<<'\n';
 
@@ -109,9 +145,9 @@ void printList(Node* head)
     cout<<'\n';
 }
 
-void DeleteAll(Node* head)
+void DeleteAll()
 {
-    cout<<'\n'<<"deleting: "<<'\t';
+    cout<<'\n'<<"deleting: "<<'\n';
 
     if(head)
     {
