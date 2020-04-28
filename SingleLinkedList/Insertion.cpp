@@ -25,6 +25,12 @@ int main()
 
     DeleteAtGivenIndex(2);
 
+    printList();
+    cout<<"After Reverse";
+
+    reverseList();
+    printList();
+
     DeleteAll();
     return 0;
 }
@@ -127,7 +133,7 @@ void DeleteAtGivenIndex(int pos)
         itr->mNext = node_to_delete->mNext;
 
         cout <<"delteing: " << node_to_delete->mData
-             << " pos: "<< pos <<'\t';
+            << " pos: "<< pos <<'\t';
         delete node_to_delete;
     }
 }
@@ -163,4 +169,21 @@ void DeleteAll()
         }
     }
     cout<<'\n';
+}
+
+void reverseList()
+{
+    Node *curr, *prev, *next;
+    curr = head;
+    prev = nullptr;
+    next = nullptr;
+
+    while(curr != nullptr)
+    {
+        next = curr->mNext;
+        curr->mNext = prev; //this is the key logic to reverse
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
 }

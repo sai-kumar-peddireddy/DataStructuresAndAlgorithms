@@ -16,4 +16,6 @@ void printList();
 void DeleteAll();
 void DeleteAtGivenIndex(int pos);
 
+void reverseList();
+
 #endif // LISTDECLARATIONS_H
