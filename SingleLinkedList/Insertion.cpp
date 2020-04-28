@@ -181,9 +181,9 @@ void reverseList()
     while(curr != nullptr)
     {
         next = curr->mNext;
-        curr->mNext = prev; //this is the key logic to reverse
+        curr->mNext = prev; // this is the key logic to reverse
         prev = curr;
         curr = next;
     }
-    head = prev;
+    head = prev; // making head should point to first node
 }
