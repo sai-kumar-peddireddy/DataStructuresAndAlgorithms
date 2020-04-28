@@ -14,7 +14,7 @@ int main()
     printList();
 
     cout<<"Reverse order: " <<'\n';
-    printListInReverse(head);
+    printListRecursive(head, false);
 
     for(int i = 9; i >= 0; --i)
         InsertValAtEnd(i);
@@ -191,12 +191,19 @@ void reverseList()
     head = prev; // making head should point to first node
 }
 
-void printListInReverse(Node* node)
+// by putting bool decession variable we are achiveing
+// both forward and backward list printing in recursion
+
+void printListRecursive(Node* node, bool forword)
 {
     if(!node)
         return ;
 
-    printListInReverse(node->mNext);
+    if(forword)
+        cout<< node->mData<<'\t';
 
-    cout<< node->mData<<'\t';
+    printListRecursive(node->mNext, forword);
+
+    if(!forword)
+        cout<< node->mData<<'\t';
 }

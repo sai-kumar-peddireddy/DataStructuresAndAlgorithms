@@ -12,7 +12,7 @@ void InsertValAtBeginning(int data);
 void InserAtGivenIndex(int data,int pos);
 
 void printList();
-void printListInReverse(Node* node);
+void printListRecursive(Node* node, bool forword = true);
 
 void DeleteAll();
 void DeleteAtGivenIndex(int pos);
