@@ -13,6 +13,9 @@ int main()
 
     printList();
 
+    cout<<"Reverse order: " <<'\n';
+    printListInReverse(head);
+
     for(int i = 9; i >= 0; --i)
         InsertValAtEnd(i);
 
@@ -186,4 +189,14 @@ void reverseList()
         curr = next;
     }
     head = prev; // making head should point to first node
+}
+
+void printListInReverse(Node* node)
+{
+    if(!node)
+        return ;
+
+    printListInReverse(node->mNext);
+
+    cout<< node->mData<<'\t';
 }
