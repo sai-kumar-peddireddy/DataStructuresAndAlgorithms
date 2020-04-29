@@ -14,7 +14,8 @@ int main()
     printList();
 
     cout<<"Reverse order: " <<'\n';
-    printListRecursive(head, false);
+    reverseListRecursive(head);
+    printList();
 
     for(int i = 9; i >= 0; --i)
         InsertValAtEnd(i);
@@ -37,7 +38,6 @@ int main()
     DeleteAll();
     return 0;
 }
-
 
 void InsertValAtEnd(int data)
 {
@@ -189,6 +189,20 @@ void reverseList()
         curr = next;
     }
     head = prev; // making head should point to first node
+}
+
+void reverseListRecursive(Node* curr)
+{
+    if(curr->mNext == nullptr)
+    {
+       head = curr;
+       return ;
+    }
+
+    reverseListRecursive(curr->mNext);
+    Node* prev = curr->mNext;
+    prev->mNext = curr;
+    curr->mNext = nullptr;
 }
 
 // by putting bool decession variable we are achiveing
