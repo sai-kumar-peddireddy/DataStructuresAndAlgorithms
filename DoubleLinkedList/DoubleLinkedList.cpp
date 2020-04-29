@@ -13,7 +13,8 @@ int main()
     InsertValAtEnd(10);
     InsertValAtEnd(20);
     InsertValAtEnd(30);
-
+    InserAtGivenIndex(15, 1);
+    InserAtGivenIndex(40, 5);
     printList();
     return 0;
 }
@@ -64,6 +65,33 @@ void InsertValAtBeginning(int data)
     {
          head = createNode(data);
     }
+}
+
+void InserAtGivenIndex(int data,int pos)
+{
+    auto itr = head;
+    for(int i = 1; i < pos -1; ++i)
+    {
+        if(!itr)
+        {
+            cout<<"not a vaild position";
+            return ;
+        }
+        itr = itr->mNext;
+    }
+    auto new_node = createNode(data);
+
+    if(pos == 1)
+    {
+        head->mPrev = new_node;
+        new_node->mNext = head;
+        head = new_node;
+        return ;
+    }
+
+
+    new_node->mNext = itr->mNext;
+    itr->mNext = new_node;
 }
 
 void printList()
