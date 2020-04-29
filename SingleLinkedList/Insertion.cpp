@@ -200,6 +200,7 @@ void reverseListRecursive(Node* curr)
     }
 
     reverseListRecursive(curr->mNext);
+    //these are key steps
     Node* prev = curr->mNext;
     prev->mNext = curr;
     curr->mNext = nullptr;
