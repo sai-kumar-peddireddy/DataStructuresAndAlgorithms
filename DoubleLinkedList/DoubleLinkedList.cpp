@@ -70,6 +70,7 @@ void InsertValAtBeginning(int data)
 void InserAtGivenIndex(int data,int pos)
 {
     auto itr = head;
+
     for(int i = 1; i < pos -1; ++i)
     {
         if(!itr)
@@ -79,6 +80,7 @@ void InserAtGivenIndex(int data,int pos)
         }
         itr = itr->mNext;
     }
+
     auto new_node = createNode(data);
 
     if(pos == 1)
@@ -88,7 +90,6 @@ void InserAtGivenIndex(int data,int pos)
         head = new_node;
         return ;
     }
-
 
     new_node->mNext = itr->mNext;
     itr->mNext = new_node;
