@@ -158,18 +158,15 @@ void DeleteAll()
 {
     cout<<'\n'<<"deleting: "<<'\n';
 
-    if(head)
+    auto itr = head;
+    while (itr != nullptr)
     {
-        auto itr = head;
-        while (itr != nullptr)
-        {
-            cout <<itr->mData <<'\t';
+        cout <<itr->mData <<'\t';
 
-            auto next_itr = itr->mNext;
-            delete itr;
-            itr = next_itr;
+        auto next_itr = itr->mNext;
+        delete itr;
+        itr = next_itr;
 
-        }
     }
     cout<<'\n';
 }
