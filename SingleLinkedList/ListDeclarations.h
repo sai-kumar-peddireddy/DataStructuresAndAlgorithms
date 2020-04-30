@@ -19,5 +19,6 @@ void DeleteAtGivenIndex(int pos);
 
 void reverseList();
 void reverseListRecursive(Node* curr);
+void reverseListUsingStack();
 
 #endif // LISTDECLARATIONS_H

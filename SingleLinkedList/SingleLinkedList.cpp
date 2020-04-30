@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 
 #include "ListDeclarations.h"
 
@@ -15,6 +16,10 @@ int main()
 
     cout<<"Reverse order: " <<'\n';
     reverseListRecursive(head);
+    printList();
+
+    cout<<"Reverseing again with stack: " <<'\n';
+    reverseListUsingStack();
     printList();
 
     for(int i = 9; i >= 0; --i)
@@ -218,4 +223,30 @@ void printListRecursive(Node* node, bool forword)
 
     if(!forword)
         cout<< node->mData<<'\t';
+}
+
+void reverseListUsingStack()
+{
+    stack<Node*> list_stack;
+
+    auto itr = head;
+
+    while (itr != nullptr)
+    {
+        list_stack.push(itr);
+        itr = itr->mNext;
+    }
+
+    head = list_stack.top();
+    list_stack.pop();
+
+    itr = head;
+    while (!list_stack.empty())
+    {
+        itr->mNext = list_stack.top();
+        itr = itr->mNext;
+        list_stack.pop();
+    }
+
+    itr->mNext = nullptr;
 }
