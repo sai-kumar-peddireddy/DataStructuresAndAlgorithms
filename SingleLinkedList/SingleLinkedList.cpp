@@ -227,8 +227,10 @@ void printListRecursive(Node* node, bool forword)
 
 void reverseListUsingStack()
 {
-    stack<Node*> list_stack;
+    if(!head)
+        return ;
 
+    stack<Node*> list_stack;
     auto itr = head;
 
     while (itr != nullptr)
