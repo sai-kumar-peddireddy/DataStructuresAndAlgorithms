@@ -26,6 +26,11 @@ int main()
 
 }
 
+// Here we are always inserting an element at the beginning of the list
+// because traversing  to end of the list will take O(n)
+// inserting an element at the beginning is O(1)
+// anyway we always access the top of the stack
+
 void push(const int& data)
 {
     auto new_element = new Node;
