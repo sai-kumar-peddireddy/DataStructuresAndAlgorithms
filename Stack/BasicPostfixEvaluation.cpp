@@ -38,8 +38,10 @@ int EvaluatePostfix(const string expression)
         }
         else
         {
+            //first element poped is operand2 in post fix
             const auto operand2 = evalution_stack.top();
             evalution_stack.pop();
+
             const auto operand1 = evalution_stack.top();
             evalution_stack.pop();
 
