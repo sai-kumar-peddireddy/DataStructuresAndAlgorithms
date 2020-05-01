@@ -32,9 +32,9 @@ int EvaluatePostfix(const string expression)
         }
         else
         {
-            const auto operand1 = evalution_stack.top();
-            evalution_stack.pop();
             const auto operand2 = evalution_stack.top();
+            evalution_stack.pop();
+            const auto operand1 = evalution_stack.top();
             evalution_stack.pop();
 
             if(expression[i] == '*')
