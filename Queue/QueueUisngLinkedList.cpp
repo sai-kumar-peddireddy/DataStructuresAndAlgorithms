@@ -4,13 +4,11 @@
 
 using namespace std;
 
-
 static Node* Qfront = nullptr;
 static Node* Qrear  = nullptr;
 
 int main()
 {
-
     Enqueue(10);
     Enqueue(20);
     Enqueue(30);
