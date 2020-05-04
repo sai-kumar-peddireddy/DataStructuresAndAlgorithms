@@ -10,5 +10,11 @@ int front();
 bool isEmpty();
 bool isFull();
 
+struct Node
+{
+    Node*    mNext;
+    size_t   mData;
+};
+
 
 #endif // QUEUEOPERATIONS_H
