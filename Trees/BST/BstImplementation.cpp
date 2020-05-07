@@ -13,7 +13,7 @@ int main()
     root = insertBstNode(root, 14);
     root = insertBstNodeRecursive(root, 16);
 
-    if(serachBstRecursive(root, 14))
+    if(serachBst(root, 14))
         cout<<"14 is found"<<'\n';
 
     if(serachBstRecursive(root, 16))
@@ -22,7 +22,7 @@ int main()
     if(serachBstRecursive(root, 10))
         cout<<"10 is found"<<'\n';
 
-    if(!serachBstRecursive(root, 13))
+    if(!serachBst(root, 13))
         cout<<"13 is not found"<<'\n';
 
     return 0;
@@ -102,5 +102,25 @@ bool serachBstRecursive(BstNode* root, int data)
     if(root->mData < data)
         return serachBstRecursive(root->mRight, data);
 
+    return false;
+}
+
+bool serachBst(BstNode* root, int data)
+{
+    auto temp_itr = root;
+
+    if(!temp_itr)
+        return false;
+
+    while (temp_itr != nullptr)
+    {
+        if(temp_itr->mData >= data)
+            temp_itr = temp_itr->mLeft;
+        else
+            temp_itr = temp_itr->mRight;
+
+        if(temp_itr && temp_itr->mData == data)
+          return true;
+    }
     return false;
 }
