@@ -8,9 +8,9 @@ int main()
 {
     BstNode* root  = nullptr;
     root = insertBstNodeRecursive(root, 10);
-    root = insertBstNodeRecursive(root, 7);
+    root = insertBstNode(root, 7);
     root = insertBstNodeRecursive(root, 15);
-    root = insertBstNodeRecursive(root, 14);
+    root = insertBstNode(root, 14);
     root = insertBstNodeRecursive(root, 16);
 
     if(serachBstRecursive(root, 14))
@@ -52,6 +52,38 @@ BstNode* insertBstNodeRecursive(BstNode* root, int data)
     else if(root->mData < data)
     {
         root->mRight = insertBstNodeRecursive(root->mRight, data);
+    }
+
+    return root;
+}
+
+BstNode* insertBstNode(BstNode* root, int data)
+{
+    auto temp_itr = root;
+
+    if(!temp_itr)
+        return temp_itr = createBstNode(data);
+
+    while (temp_itr != nullptr)
+    {
+        if(temp_itr->mData >= data)
+        {
+            if(!temp_itr->mLeft)
+            {
+                temp_itr->mLeft = createBstNode(data);
+                return root;
+            }
+            temp_itr = temp_itr->mLeft;
+        }
+        else
+        {
+            if(!temp_itr->mRight)
+            {
+                temp_itr->mRight = createBstNode(data);
+                return root;
+            }
+            temp_itr = temp_itr->mRight;
+        }
     }
 
     return root;

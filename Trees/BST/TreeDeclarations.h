@@ -11,8 +11,10 @@ struct BstNode
 BstNode* createBstNode(int data);
 
 BstNode* insertBstNodeRecursive(BstNode* root, int data);
+BstNode* insertBstNode(BstNode* root, int data);
 
 bool serachBstRecursive(BstNode* root, int data);
+bool serachBst(BstNode* root, int data);
 
 
 #endif // TREEDECLARATIONS_H
