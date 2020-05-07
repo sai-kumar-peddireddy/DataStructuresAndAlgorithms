@@ -8,7 +8,11 @@ struct BstNode
     BstNode* mRight;
 };
 
-BstNode* createNode(int data);
+BstNode* createBstNode(int data);
+
+BstNode* insertBstNodeRecursive(BstNode* root, int data);
+
+bool serachBstRecursive(BstNode* root, int data);
 
 
 #endif // TREEDECLARATIONS_H
