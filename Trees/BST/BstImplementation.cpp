@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 
 #include "TreeDeclarations.h"
 
@@ -11,6 +12,7 @@ int main()
     root = insertBstNode(root, 7);
     root = insertBstNodeRecursive(root, 15);
     root = insertBstNode(root, 14);
+    root = insertBstNode(root, 13);
     root = insertBstNodeRecursive(root, 16);
 
     if(serachBst(root, 14))
@@ -24,6 +26,8 @@ int main()
 
     if(!serachBst(root, 13))
         cout<<"13 is not found"<<'\n';
+
+    cout<<"height of a tree is: "<<heightOfBst(root)<<'\n';
 
     cout<<"Min in tree: "<<findMin(root)<<'\n';
     cout<<"Max in tree: "<<findMax(root)<<'\n';
@@ -191,4 +195,14 @@ int findMaxRecursive(BstNode* root)
         return root->mData;
     }
     return findMaxRecursive(root->mRight);
+}
+
+int heightOfBst(BstNode* root)
+{
+    if(!root)
+        return  -1;
+
+    const auto h_left = heightOfBst(root->mLeft);
+    const auto h_right = heightOfBst(root->mRight);
+    return max(h_left, h_right) + 1;
 }

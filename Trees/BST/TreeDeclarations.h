@@ -22,5 +22,7 @@ int findMinRecursive(BstNode* root);
 int findMax(BstNode* root);
 int findMaxRecursive(BstNode* root);
 
+int heightOfBst(BstNode* root);
+
 
 #endif // TREEDECLARATIONS_H
