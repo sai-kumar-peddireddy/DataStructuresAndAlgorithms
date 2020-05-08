@@ -16,5 +16,8 @@ BstNode* insertBstNode(BstNode* root, int data);
 bool serachBstRecursive(BstNode* root, int data);
 bool serachBst(BstNode* root, int data);
 
+int findMin(BstNode* root);
+int findMax(BstNode* root);
+
 
 #endif // TREEDECLARATIONS_H

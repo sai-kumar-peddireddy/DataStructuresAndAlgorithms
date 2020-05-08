@@ -25,6 +25,9 @@ int main()
     if(!serachBst(root, 13))
         cout<<"13 is not found"<<'\n';
 
+    cout<<"Min in tree: "<<findMin(root)<<'\n';
+    cout<<"Max in tree: "<<findMax(root)<<'\n';
+
     return 0;
 }
 
@@ -124,3 +127,34 @@ bool serachBst(BstNode* root, int data)
     }
     return false;
 }
+
+int findMin(BstNode* root)
+{
+    if(!root)
+    {
+        cout<<'\n'<<"tree is empty"<<'\n';
+        return -1;
+    }
+
+    while (root->mLeft != nullptr)
+    {
+        root = root->mLeft;
+    }
+    return root->mData;
+}
+
+int findMax(BstNode* root)
+{
+    if(!root)
+    {
+        cout<<'\n'<<"tree is empty"<<'\n';
+        return -1;
+    }
+
+    while (root->mRight != nullptr)
+    {
+        root = root->mRight;
+    }
+    return root->mData;
+}
+
