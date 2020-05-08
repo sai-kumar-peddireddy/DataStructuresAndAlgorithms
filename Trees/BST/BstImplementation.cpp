@@ -202,7 +202,8 @@ int heightOfBst(BstNode* root)
     if(!root)
         return  -1;
 
-    const auto h_left = heightOfBst(root->mLeft);
+    const auto h_left  = heightOfBst(root->mLeft);
     const auto h_right = heightOfBst(root->mRight);
+
     return max(h_left, h_right) + 1;
 }
