@@ -28,6 +28,10 @@ int main()
     cout<<"Min in tree: "<<findMin(root)<<'\n';
     cout<<"Max in tree: "<<findMax(root)<<'\n';
 
+    cout<<"Recursive calls: " <<'\n';
+    cout<<"Min in tree: "<<findMinRecursive(root)<<'\n';
+    cout<<"Max in tree: "<<findMaxRecursive(root)<<'\n';
+
     return 0;
 }
 
@@ -123,7 +127,7 @@ bool serachBst(BstNode* root, int data)
             temp_itr = temp_itr->mRight;
 
         if(temp_itr && temp_itr->mData == data)
-          return true;
+            return true;
     }
     return false;
 }
@@ -158,3 +162,33 @@ int findMax(BstNode* root)
     return root->mData;
 }
 
+int findMinRecursive(BstNode* root)
+{
+    if(!root)
+    {
+        cout<<'\n'<<"tree is empty"<<'\n';
+        return -1;
+    }
+
+    if(!root->mLeft)
+    {
+        return root->mData;
+    }
+
+    return findMinRecursive(root->mLeft);
+}
+
+int findMaxRecursive(BstNode* root)
+{
+    if(!root)
+    {
+        cout<<'\n'<<"tree is empty"<<'\n';
+        return -1;
+    }
+
+    if(!root->mRight)
+    {
+        return root->mData;
+    }
+    return findMaxRecursive(root->mRight);
+}
