@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <queue>
 
 #include "TreeDeclarations.h"
 
@@ -35,6 +36,8 @@ int main()
     cout<<"Recursive calls: " <<'\n';
     cout<<"Min in tree: "<<findMinRecursive(root)<<'\n';
     cout<<"Max in tree: "<<findMaxRecursive(root)<<'\n';
+
+    breadthFirst(root);
 
     return 0;
 }
@@ -206,4 +209,31 @@ int heightOfBst(BstNode* root)
     const auto h_right = heightOfBst(root->mRight);
 
     return max(h_left, h_right) + 1;
+}
+
+void breadthFirst(BstNode* root)
+{
+    if(!root)
+        return ;
+
+    cout<<"\nBreadth First:"<<'\n';
+
+    queue<BstNode*> node_q;
+    node_q.push(root);
+
+    while (!node_q.empty())
+    {
+        const auto& current = node_q.front();
+
+        cout<<current->mData <<'\t'; //processing the data
+
+        if(current->mLeft)
+            node_q.push(current->mLeft);
+
+        if(current->mRight)
+            node_q.push(current->mRight);
+
+        node_q.pop();
+    }
+    cout<<'\n';
 }

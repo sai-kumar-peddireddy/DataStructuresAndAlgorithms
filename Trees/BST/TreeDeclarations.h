@@ -24,5 +24,6 @@ int findMaxRecursive(BstNode* root);
 
 int heightOfBst(BstNode* root);
 
+void breadthFirst(BstNode* root);
 
 #endif // TREEDECLARATIONS_H
