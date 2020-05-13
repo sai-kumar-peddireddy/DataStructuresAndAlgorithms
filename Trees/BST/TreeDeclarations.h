@@ -26,4 +26,8 @@ int heightOfBst(BstNode* root);
 
 void breadthFirst(BstNode* root);
 
+void preOrder(BstNode* root);
+void inOrder(BstNode* root);
+void postOrder(BstNode* root);
+
 #endif // TREEDECLARATIONS_H

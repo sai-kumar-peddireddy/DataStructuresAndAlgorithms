@@ -39,6 +39,15 @@ int main()
 
     breadthFirst(root);
 
+    cout<<'\n'<<"pre Order: "<<'\n';
+    preOrder(root);
+
+    cout<<'\n'<<"In Order: "<<'\n';
+    inOrder(root);
+
+    cout<<'\n'<<"post Order: "<<'\n';
+    postOrder(root);
+
     return 0;
 }
 
@@ -236,4 +245,34 @@ void breadthFirst(BstNode* root)
         node_q.pop();
     }
     cout<<'\n';
+}
+
+void preOrder(BstNode* root)
+{
+    if(!root)
+        return ;
+
+    cout <<root->mData <<'\t';
+    preOrder(root->mLeft);
+    preOrder(root->mRight);
+}
+
+void inOrder(BstNode* root)
+{
+    if(!root)
+        return ;
+
+    inOrder(root->mLeft);
+    cout <<root->mData <<'\t';
+    inOrder(root->mRight);
+}
+
+void postOrder(BstNode* root)
+{
+    if(!root)
+        return ;
+
+    postOrder(root->mLeft);
+    postOrder(root->mRight);
+    cout <<root->mData <<'\t';
 }
