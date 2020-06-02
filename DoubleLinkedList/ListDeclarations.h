@@ -4,8 +4,11 @@
 struct Node
 {
     int   mData;
+    Node* mPrev;
     Node* mNext;
 };
+
+Node* createNode(int data);
 
 void InsertValAtEnd(int data);
 void InsertValAtBeginning(int data);
@@ -19,6 +22,5 @@ void DeleteAtGivenIndex(int pos);
 
 void reverseList();
 void reverseListRecursive(Node* curr);
-void reverseListUsingStack();
 
 #endif // LISTDECLARATIONS_H

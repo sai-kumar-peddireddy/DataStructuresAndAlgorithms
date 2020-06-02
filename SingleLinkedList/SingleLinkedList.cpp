@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 
 #include "ListDeclarations.h"
 
@@ -14,7 +15,12 @@ int main()
     printList();
 
     cout<<"Reverse order: " <<'\n';
-    printListInReverse(head);
+    reverseListRecursive(head);
+    printList();
+
+    cout<<"Reverseing again with stack: " <<'\n';
+    reverseListUsingStack();
+    printList();
 
     for(int i = 9; i >= 0; --i)
         InsertValAtEnd(i);
@@ -37,7 +43,6 @@ int main()
     DeleteAll();
     return 0;
 }
-
 
 void InsertValAtEnd(int data)
 {
@@ -158,18 +163,15 @@ void DeleteAll()
 {
     cout<<'\n'<<"deleting: "<<'\n';
 
-    if(head)
+    auto itr = head;
+    while (itr != nullptr)
     {
-        auto itr = head;
-        while (itr != nullptr)
-        {
-            cout <<itr->mData <<'\t';
+        cout <<itr->mData <<'\t';
 
-            auto next_itr = itr->mNext;
-            delete itr;
-            itr = next_itr;
+        auto next_itr = itr->mNext;
+        delete itr;
+        itr = next_itr;
 
-        }
     }
     cout<<'\n';
 }
@@ -191,12 +193,62 @@ void reverseList()
     head = prev; // making head should point to first node
 }
 
-void printListInReverse(Node* node)
+void reverseListRecursive(Node* curr)
+{
+    if(curr->mNext == nullptr)
+    {
+       head = curr;
+       return ;
+    }
+
+    reverseListRecursive(curr->mNext);
+    //these are key steps
+    Node* prev = curr->mNext;
+    prev->mNext = curr;
+    curr->mNext = nullptr;
+}
+
+// by putting bool decession variable we are achiveing
+// both forward and backward list printing in recursion
+
+void printListRecursive(Node* node, bool forword)
 {
     if(!node)
         return ;
 
-    printListInReverse(node->mNext);
+    if(forword)
+        cout<< node->mData<<'\t';
 
-    cout<< node->mData<<'\t';
+    printListRecursive(node->mNext, forword);
+
+    if(!forword)
+        cout<< node->mData<<'\t';
+}
+
+void reverseListUsingStack()
+{
+    if(!head)
+        return ;
+
+    stack<Node*> list_stack;
+    auto itr = head;
+
+    while (itr != nullptr)
+    {
+        list_stack.push(itr);
+        itr = itr->mNext;
+    }
+
+    head = list_stack.top();
+    list_stack.pop();
+
+    itr = head;
+    while (!list_stack.empty())
+    {
+        itr->mNext = list_stack.top();
+        itr = itr->mNext;
+        list_stack.pop();
+    }
+
+    itr->mNext = nullptr;
 }
